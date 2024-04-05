@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data</title>
+    <style>
+        /* Define styles for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: darkgreen
+        }
+        tr:nth-child(even) {
+            background-color: lightblue  
+        }
+        tr:nth-child(odd) {
+            background-color: lightpink 
+        }
+    </style>
+</head>
+<body>
+    <h1>Country Data</h1>
+    <div id="countryData"></div>
+
+    <script>
+        // Fetch data from the API endpoint
+        fetch('http://localhost:3000/alldata')
+            .then(response => response.json())
+            .then(data => {
+                // Process and display data
+                const countryData = document.getElementById('countryData');
+                countryData.innerHTML = '<h2>All Country Data</h2>';
+                const table = document.createElement('table');
+                // Create table header
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                ['Country', 'Capital', 'Unemployment', 'Total GDP'].forEach(headerText => {
+                    const th = document.createElement('th');
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+                // Create table body
+                const tbody = document.createElement('tbody');
+                data.country.forEach(country => {
+                    const row = document.createElement('tr');
+                    const cellCountry = document.createElement('td');
+                    cellCountry.textContent = country.name;
+                    row.appendChild(cellCountry);
+                    const cellCapital = document.createElement('td');
+                    cellCapital.textContent = country['@capital'] ? country['@capital'].split('-').pop() : 'N/A';
+                    row.appendChild(cellCapital);
+                    const cellUnemployment = document.createElement('td');
+                    cellUnemployment.textContent = country.unemployment;
+                    row.appendChild(cellUnemployment);
+                    const cellGDP = document.createElement('td');
+                    cellGDP.textContent = country.gdp_total;
+                    row.appendChild(cellGDP);
+                    tbody.appendChild(row);
+                });
+                table.appendChild(tbody);
+                countryData.appendChild(table);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>

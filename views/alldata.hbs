@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Country Data</title>
+</head>
+<body>
+    <h1>All Country Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Capital</th>
+                <th>Unemployment</th>
+                <th>Total GDP</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each countries}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.capital}}</td>
+                <td>{{this.unemployment}}</td>
+                <td>{{this.gdpTotal}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
