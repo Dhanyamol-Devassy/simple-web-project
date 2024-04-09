@@ -3,6 +3,8 @@ const hbs = require('hbs');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
+const axios = require('axios');
+
 
 const app = express();
 app.use(cors());
@@ -29,6 +31,30 @@ app.get('/alldata', (req, res) => {
         }
     });
 });
+
+app.get('/country/:countryName/holidays', async (req, res) => {
+    const countryName = req.params.countryName;
+
+    try {
+        // Make a request to the holiday API for the specified country
+        const response = await axios.get('https://holidays-by-api-ninjas.p.rapidapi.com/v1/holidays', {
+            params: {
+                country: countryName,
+                year: '2021'
+            },
+            headers: {
+                'X-RapidAPI-Key': 'aab51485ccmsh9882fea0a2b9967p19bfb9jsn66cc732a240f',
+                'X-RapidAPI-Host': 'holidays-by-api-ninjas.p.rapidapi.com'
+            }
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching holidays for', countryName, ':', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 app.get('/viewdata', (req, res) => {
     // Read the JSON file
