@@ -8,6 +8,6 @@
       { "handle": "filesystem" },
       { "src": "/(.*)", "dest": "server.js" }
     ],
-    "files": ["data.json"]
+    "files": ["data"]
   }
   
