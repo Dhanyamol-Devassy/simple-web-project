@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Function to get the base URL based on environment
 function getBaseUrl(req) {
     if (process.env.NODE_ENV === 'production') {
-        return 'https://your-cyclic-domain.com'; // Replace with your actual Cyclic domain
+        return 'https://turquoise-puffer-gear.cyclic.app/'; 
     } else {
         return 'http://localhost:3000'; // Use localhost for local development
     }
