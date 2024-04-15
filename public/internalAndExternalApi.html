@@ -43,7 +43,7 @@
             let holidayData, populationData;
 
             // Fetch predicted population for the selected country and year
-            fetch(`http://localhost:3000/country/${countryName}/population?year=${year}`)
+            fetch(`/country/${countryName}/population?year=${year}`)
                 .then(response => response.json())
                 .then(data => {
                     populationData = data;
@@ -55,7 +55,7 @@
                 .catch(error => console.error('Error fetching predicted population for', countryName, ':', error));
 
             // Fetch holidays for the selected country and year
-            fetch(`http://localhost:3000/country/${countryName}/holidays?year=${year}`)
+            fetch(`/country/${countryName}/holidays?year=${year}`)
                 .then(response => response.json())
                 .then(data => {
                     holidayData = data;
@@ -87,7 +87,7 @@
         }
 
         // Fetch data from the API endpoint
-        fetch('http://localhost:3000/alldata')
+        fetch('/alldata')
             .then(response => response.json())
             .then(data => {
                 // Process and display data
