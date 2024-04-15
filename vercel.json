@@ -1,12 +1,14 @@
 {
-    "name": "Web-Project",
-    "version": 2,
-    "builds": [
-      { "src": "server.js", "use": "@vercel/node" }
-    ],
-    "routes": [
-      { "handle": "filesystem" },
-      { "src": "/(.*)", "dest": "server.js" }
-    ]
-  }
+  "name": "my-serverless-app",
+  "version": 2,
+  "routes": [
+    { "src": "/", "dest": "/index.js" },
+    { "src": "/alldata", "dest": "/index.js" },
+    { "src": "/viewdata", "dest": "/index.js" },
+    { "src": "/country/:countryName/holidays", "dest": "/index.js" },
+    { "src": "/country/:countryName/population", "dest": "/index.js" },
+    { "src": "/(.*)", "dest": "/index.js" }
+  ]
+}
+
   
