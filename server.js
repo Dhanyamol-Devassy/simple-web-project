@@ -17,12 +17,16 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Function to get the base URL based on environment
 function getBaseUrl(req) {
-    if (process.env.NODE_ENV === 'production') {
-        return 'https://turquoise-puffer-gear.cyclic.app/'; 
+    const isNetlify = process.env.NETLIFY === 'true';
+
+    if (isNetlify) {
+        // Use the default Netlify domain
+        return `https://${process.env.DEPLOY_PRIME_URL}/`;
     } else {
         return 'http://localhost:3000'; // Use localhost for local development
     }
 }
+
 
 // Define routes
 
