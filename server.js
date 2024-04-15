@@ -21,8 +21,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Function to get the base URL based on environment
 function getBaseUrl(req) {
-    if (process.env.NODE_ENV === 'production') {
-        return 'https://simple-web-project.vercel.app'; //Vercel app URL
+    if (process.env.NODE_ENV === 'Production') {
+        return 'https://simple-web-project.vercel.app/ '; //Vercel app URL
     } else {
         return 'http://localhost:3000'; // Use localhost for local development
     }
