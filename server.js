@@ -59,7 +59,6 @@ app.get('/country/:countryName/holidays', async (req, res) => {
 
     try {
         // Make a request to the holiday API for the specified country and year
-        const response = await axios.get(`${getBaseUrl(req)}/country/${countryName}/holidays?year=${year}`);
         const response = await axios.get('https://holidays-by-api-ninjas.p.rapidapi.com/v1/holidays', {
             params: {
                 country: countryName,
