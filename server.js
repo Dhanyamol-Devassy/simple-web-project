@@ -1,4 +1,4 @@
-const express = require('express');
+const express=require('express');
 const hbs = require('hbs');
 const path = require('path');
 const fs = require('fs');
@@ -14,19 +14,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Set the view engine
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Function to get the base URL based on environment
-function getBaseUrl(req) {
-    const isNetlify = process.env.NETLIFY === 'true';
-
-    if (isNetlify) {
-        // Use the default Netlify domain
-        return `https://${process.env.DEPLOY_PRIME_URL}/`;
-    } else {
-        return 'http://localhost:3000'; // Use localhost for local development
-    }
-}
-
 
 // Define routes
 
@@ -156,6 +143,9 @@ app.get('/country/:countryName/population', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+
+
 
 // Start the server on port 3000
 const PORT = process.env.PORT || 3000;
