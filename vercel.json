@@ -2,12 +2,12 @@
   "name": "my-serverless-app",
   "version": 2,
   "routes": [
-    { "src": "/", "dest": "/index.js" },
-    { "src": "/alldata", "dest": "/index.js" },
-    { "src": "/viewdata", "dest": "/index.js" },
-    { "src": "/country/:countryName/holidays", "dest": "/index.js" },
-    { "src": "/country/:countryName/population", "dest": "/index.js" },
-    { "src": "/(.*)", "dest": "/index.js" }
+    { "src": "/", "dest": "/server.js" },
+    { "src": "/alldata", "dest": "/server.js" },
+    { "src": "/viewdata", "dest": "/server.js" },
+    { "src": "/country/:countryName/holidays", "dest": "/server.js" },
+    { "src": "/country/:countryName/population", "dest": "/server.js" },
+    { "src": "/(.*)", "dest": "/server.js" }
   ]
 }
 
