@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Function to get the base URL based on environment
 function getBaseUrl(req) {
     if (process.env.NODE_ENV === 'production') {
-        return 'https://turquoise-puffer-gear.cyclic.app/'; 
+        return 'https://simple-web-project.vercel.app'; //Vercel app URL
     } else {
         return 'http://localhost:3000'; // Use localhost for local development
     }
@@ -111,7 +111,6 @@ app.get('/country/:countryName/holidays', async (req, res) => {
     }
 });
 
-
 // Route for population prediction
 app.get('/country/:countryName/population', async (req, res) => {
     const countryName = req.params.countryName;
@@ -157,11 +156,5 @@ app.get('/country/:countryName/population', async (req, res) => {
     }
 });
 
-
-
-
-// Start the server on port 3000
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// Export the Express app as a function
+module.exports = app;
